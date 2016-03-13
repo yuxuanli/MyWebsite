@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head><% include partials/page/head.ejs %></head>
+  <body>
+  	<div class="container">
+  	<% include partials/page/header.ejs %>
+
+  	<form role="form" method="POST">
+  		<div class= "form-group">
+  			<label for="city">City Name</label></br >
+  			<input name = "city" type="text"></br >
+  		</div>
+
+  		<div class= "form-group">
+  			<label for="des">Description</label></br>
+  			<input name = "des" type ="text">
+  		</div>
+  		<button id="submit" type="submit" class="btn btn-default">Submit</button>
+  	</form>
+
+  	<table class="table table-hover">
+  		<thead>
+  			<tr>
+  				<th>City</th>
+  				<th>Description</th>
+  				<th>Action</th>
+  			</tr>
+  		</thead>
+  		<tbody>
+  			<% for (var i=0;i<cities.length;i++) {%>
+	  			 <tr>
+	  			 	<td><%= cities[i].name %></td> 
+	  			 	<td><%= cities[i].des %></td>
+	  			 	<td><span <%='data-name='+encodeURIComponent(cities[i].name) %> class="glyphicon glyphicon-remove"></span></td>
+	  			 </tr>
+  			<%  } %>
+  		</tbody>
+  	</table>
+	<% include partials/page/footer.ejs %>
+	
+	</div>
+	<% include partials/page/jsdefault.ejs %>
+  </body>
+</html>
+
+<script>
+	// $.("#submit").click(function(){
+	// 	var city = 
+	// });
+
+	// $("#submit").click(function(event){
+	// 	var name = $('[name="city"]').val();
+	// 	var des= $('[name="des"]').val();
+	// 	console.log(name);
+	// 	$.ajax({
+	// 		type:'POST', url:'/cities', data:{"name": name, "des": des}
+	// 	}).done(function(){
+	// 		//$("tbody").append('<tr><td>'+name+'</td><td>'+des+'</td><td><span data-name='+ encodeURIComponent(name) +' class="glyphicon glyphicon-remove"></span></td></tr>');
+	// 		$('[name="city"]').val("");
+	// 		$('[name="des"]').val("");
+	// 	})
+	// });
+
+	$(".glyphicon-remove").click(function(event){
+		if(!confirm('Are you sure ?')){
+			return false;
+		}
+		var target = $(event.currentTarget);
+		console.log(target.data('name'));
+		$.ajax({
+			type: 'DELETE', url:'/cities/' + target.data('name')
+		}).done(function(){
+			target.parents('tr').remove()
+		})
+		
+	});
+
+
+</script>
+		
+

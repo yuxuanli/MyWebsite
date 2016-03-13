@@ -1,0 +1,31 @@
+<nav class="navbar navbar-default">
+	<div class="container-fluid">
+		<div class="navbar-header">
+			<a class="navbar-brand" href="/"><b>YuxuanLi</b></a>
+		</div>
+		<div>
+			<ul class="nav navbar-nav">
+				<li><a href="/"></span>Home</a></li>
+				<li><a href="/blog">Blog</a></li>
+
+				<li class="dropdown">
+					<a class="dropdown-toggle" data-toggle="dropdown" href="#">Apps<span class="caret"></span></a>
+					<ul class="dropdown-menu">
+						<li><a href="/app_weatherforecast">Weather Forecast</a></li>
+						<li><a href="/cities">Cities</a></li>
+					</ul>
+				</li>
+
+				<li><a href=""></a></li>
+
+				<li><a href=<%= 'mailto:'+ global.myemail %>><img width="24px" src="images/icons/email_icon.png"></a></li>
+				<% for (var i=0; i<global.socialmedia.length; i++) { %>
+					<li><a href=<%= global.socialmedia[i].url %>><img width="24px"src=<%= 'images/icons/' + global.socialmedia[i].name + '_icon.png' %>></a></li>
+				<% } %>
+
+			</ul>
+
+
+		</div>
+	</div>
+</nav>
