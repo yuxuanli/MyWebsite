@@ -30,11 +30,10 @@ router.route('/')
 	})
 	.post(parseUrlencoded, function(req, res){
 		var cityName = req.body.city;
-		//console.log("cityName is "+ cityName);
+		
 		var desText = req.body.des;
 		data.cities.push({name: cityName, des: desText});
-		//res.sendStatus(200);
-		res.render('cities', data);
+		res.sendStatus(200);
 	});
 
 router.route('/:name')
@@ -54,8 +53,8 @@ router.route('/:name')
 			}
 		}
 		console.log(data.cities);
-		res.sendStatus(200).json({status:"ok"});
-		//res.render('cities', data);
+		res.sendStatus(204);
+		
 	});
 
 module.exports = router;

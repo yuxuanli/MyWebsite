@@ -7,8 +7,10 @@ const path = require('path');
 
 app.set('port', (process.env.PORT || 5000))
 
-app.set('view engine', 'ejs');
+
 app.use(express.static(path.join(__dirname, 'public')));
+
+app.set('view engine', 'ejs');
 
 var cities = require('./routes/cities')
 app.use('/cities', cities);
