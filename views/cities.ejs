@@ -49,7 +49,6 @@
 	$(document).ready(function(){
 		addRemoveListener($(".glyphicon-remove"));
 		setSubmitListener();
-
 	});
 	// $("#add3").click(function(event){
 
@@ -84,10 +83,7 @@
 				
 					});
 			}
-
 		});
-		
-
 	};
 	
 	var addRemoveListener = function(selector){
@@ -102,9 +98,7 @@
 			}).done(function(){
 				target.parents('tr').remove()
 			})
-		
 		});
-
 	}
 	
 
